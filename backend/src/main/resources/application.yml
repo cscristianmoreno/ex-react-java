@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: simple-crud
+  datasource:
+    url: ${MYSQL_URL}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    generate-ddl: false
+    show-sql: true
+  sql:
+    init:
+      schema-locations:
+        - classpath:/sql/persons.sql
+      mode: always
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+# server:
+#   port: 8080

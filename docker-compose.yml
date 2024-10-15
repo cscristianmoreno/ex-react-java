@@ -1,0 +1,35 @@
+version: "2"
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    container_name: mysql-db
+    ports:
+      - 33060:3306
+    env_file: ./.env
+    volumes:
+      - db_volume:/var/lib/mysql
+
+  backend:
+    container_name: spring-app
+    build:
+      context: backend/.
+    ports:
+      - 8080:8080
+    env_file: ./.env
+    depends_on:
+      - mysql
+
+  frontend:
+    container_name: react-app
+    build:
+      context: frontend/.
+    env_file: ./.env
+    ports:
+      - 4173:4173
+    depends_on:
+      - backend
+
+volumes:
+  db_volume:
