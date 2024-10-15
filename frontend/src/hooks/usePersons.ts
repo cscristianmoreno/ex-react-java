@@ -11,7 +11,7 @@ export const usePersons = () => {
     const [person, setPerson]: HookModelStruct<Persons | null> = useState<Persons | null>(null);
     const [edit, setEdit]: HookModelStruct<boolean> = useState<boolean>(false);
 
-    const { findAll, initialized }: UseRepositoryModelStruct<PersonsDTO> = useRepository();
+    const { findAll, initialized, render }: UseRepositoryModelStruct<PersonsDTO> = useRepository();
 
     useEffect((): void => {
         const getAllPersons: FunctionModelStruct = async () => {
@@ -20,7 +20,7 @@ export const usePersons = () => {
         };
 
         getAllPersons();
-    }, [initialized]);
+    }, [initialized, render]);
 
     return {
         allPersons,

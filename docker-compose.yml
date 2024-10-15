@@ -7,7 +7,7 @@ services:
     container_name: mysql-db
     ports:
       - 33060:3306
-    env_file: ./.env
+    env_file: backend/src/main/resources/.env
     volumes:
       - db_volume:/var/lib/mysql
 
@@ -17,7 +17,7 @@ services:
       context: backend/.
     ports:
       - 8080:8080
-    env_file: ./.env
+    env_file: backend/src/main/resources/.env
     depends_on:
       - mysql
 
@@ -25,7 +25,7 @@ services:
     container_name: react-app
     build:
       context: frontend/.
-    env_file: ./.env
+    env_file: frontend/.env
     ports:
       - 4173:4173
     depends_on:

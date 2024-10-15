@@ -4,5 +4,6 @@ export type UseRepositoryModelStruct<T> = {
     findById: (id: number) => Promise<T | null>,
     findAll: () => Promise<T[]>,
     deleteById: (id: number) => Promise<void>,
-    initialized: boolean
+    initialized: boolean,
+    render: boolean
 };
